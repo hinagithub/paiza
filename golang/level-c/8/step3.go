@@ -15,10 +15,13 @@ import (
 )
 
 func main() {
+	const decimalPlace int = 3
 	sc := bufio.NewScanner(os.Stdin)
 	sc.Scan()
 	n, _ := strconv.ParseFloat(sc.Text(), 64)
-	fmt.Println(roundTo(n))
+	rounded := roundTo(n)
+	format := fmt.Sprintf("%%.%df", decimalPlace)
+	fmt.Printf(format, rounded)
 }
 func roundTo(n float64) float64 {
 	return math.Round(n*1000) / 1000
