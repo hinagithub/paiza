@@ -1,53 +1,42 @@
-// 問題
-// 九九表を、横の数値間では | (半角スペース バーティカルライン 半角スペース)、縦の数値間では = で区切って出力してください。
-// ただし、数値を出力する際は 2 けたになるよう半角スペース埋めで出力します。
-// また、縦の数値間で = を出力する際は、その上の行と文字数が等しくなるように出力します。
-
-// 期待値
-// 1 |  2 |  3 |  4 |  5 |  6 |  7 |  8 |  9
-// ==========================================
-//  2 |  4 |  6 |  8 | 10 | 12 | 14 | 16 | 18
-// ==========================================
-//  3 |  6 |  9 | 12 | 15 | 18 | 21 | 24 | 27
-// ==========================================
-//  4 |  8 | 12 | 16 | 20 | 24 | 28 | 32 | 36
-// ==========================================
-//  5 | 10 | 15 | 20 | 25 | 30 | 35 | 40 | 45
-// ==========================================
-//  6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 | 54
-// ==========================================
-//  7 | 14 | 21 | 28 | 35 | 42 | 49 | 56 | 63
-// ==========================================
-//  8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72
-// ==========================================
-//  9 | 18 | 27 | 36 | 45 | 54 | 63 | 72 | 81
-
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
+	"strconv"
 	"strings"
 )
 
 func main() {
-	const max = 9
-	var lineLen int
+	sc := bufio.NewScanner(os.Stdin)
+	sc.Scan()
+	inputs := strings.Split(sc.Text(), " ")
 
-	for i := 1; i <= max; i++ {
-		var multiplicationResults []string
-		for j := 1; j <= max; j++ {
-			multiplicationResults = append(multiplicationResults, fmt.Sprintf("%2d", i*j))
+	height, _ := strconv.Atoi(inputs[0])
+	width, _ := strconv.Atoi(inputs[1])
+	a, _ := strconv.Atoi(inputs[2])
+	b, _ := strconv.Atoi(inputs[3])
+
+	var rowWidth int
+
+	for i := 0; i < height; i++ {
+		rowCells := make([]string, width)
+		for j := 0; j < width; j++ {
+			cellText := fmt.Sprintf("(%d, %d)", a, b)
+			rowCells[j] = cellText
 		}
 
-		multiplicationLine := strings.Join(multiplicationResults, " | ")
-		fmt.Println(multiplicationLine)
+		rowText := strings.Join(rowCells, " | ")
+		fmt.Println(rowText)
 
-		if i == 1 {
-			lineLen = len(multiplicationLine)
+		// 1行目で横幅を測定
+		if i == 0 {
+			rowWidth = len(rowText)
 		}
 
-		if i != max {
-			fmt.Println(strings.Repeat("=", lineLen))
+		if i != height-1 {
+			fmt.Println(strings.Repeat("=", rowWidth))
 		}
 	}
 }
