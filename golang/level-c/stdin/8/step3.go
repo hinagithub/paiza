@@ -1,0 +1,23 @@
+// 問題
+// 1 行目で、整数 N と、続けて N 個の実数 a_1, ... , a_N が半角スペース区切りで与えられます。
+// a_1, ... , a_N を改行区切りでそのまま出力してください。
+
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strings"
+)
+
+func main() {
+	sc := bufio.NewScanner(os.Stdin)
+	sc.Scan()
+	inputs := strings.Fields(sc.Text())
+
+	// 配列0番目は読み飛ばす
+	for _, input := range inputs[1:] {
+		fmt.Println(input)
+	}
+}
