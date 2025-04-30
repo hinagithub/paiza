@@ -16,15 +16,22 @@ import (
 
 func main() {
 	scanner := bufio.NewScanner(os.Stdin)
-	scanner.Scan() // 要素数(N)は使用しない
+	scanner.Scan() // 要素数(n)は不要なのでスキップ
+	const count = 10
+
+	// 要素を取得
 	scanner.Scan()
 	inputs := strings.Fields(scanner.Text())
 	numbers := atoiall(inputs)
 
-	results := []int{}
-	for i, number := range numbers {
-
+	resultNumbers := make([]int, count)
+	for i := 0; i < count; i++ {
+		resultNumbers = append(resultNumbers, countOccurrences(numbers, i))
 	}
+
+	results := itoaall(resultNumbers)
+	fmt.Println(strings.Join(results, " "))
+
 }
 
 func atoiall(texts []string) []int {
@@ -36,7 +43,25 @@ func atoiall(texts []string) []int {
 			os.Exit(1)
 		}
 		numbers = append(numbers, number)
-
 	}
 	return numbers
+}
+
+func itoaall(numbers []int) []string {
+	texts := []string{}
+	for _, number := range numbers {
+		text := strconv.Itoa(number)
+		texts = append(texts, text)
+	}
+	return texts
+}
+
+func countOccurrences(numbers []int, target int) int {
+	count := 0
+	for _, number := range numbers {
+		if number == target {
+			count++
+		}
+	}
+	return count
 }
