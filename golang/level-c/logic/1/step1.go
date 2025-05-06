@@ -20,7 +20,6 @@ func main() {
 	b := atoi(inputs[1])
 
 	fmt.Println(a & b)
-	fmt.Println(0 & 1)
 }
 
 func atoi(text string) int {
