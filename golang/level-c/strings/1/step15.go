@@ -2,6 +2,8 @@
 // 大文字と小文字のアルファベットが混ざった文字列 S が与えられます。
 // S の小文字を全て大文字に、大文字を全て小文字にした文字列を出力してください。
 
+// func strings.Map(mapping func(rune) rune, s string) stringを使うと良さそう
+
 package main
 
 import (
