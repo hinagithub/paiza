@@ -35,7 +35,7 @@ func main() {
 	fmt.Println(string(strResult[N-1]))
 
 }
-
+ß
 func read(scanner *bufio.Scanner) string {
 	if !scanner.Scan() {
 		fmt.Fprintf(os.Stderr, "scan err")
