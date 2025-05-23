@@ -31,10 +31,10 @@ func main() {
 	}
 
 	// 平均値を割り出す
-	average := sum / length
+	average := float64(sum) / float64(length)
 
 	for _, num := range numbers {
-		if num >= average {
+		if float64(num) >= average {
 			fmt.Println(num)
 		}
 	}
