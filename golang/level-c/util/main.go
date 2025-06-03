@@ -12,11 +12,11 @@ import (
 
 func main() {
 	scanner := bufio.NewScanner(os.Stdin)
-	inputs := strings.Fields(readline(scanner))
+	inputs := strings.Fields(readLine(scanner))
 	fmt.Println(inputs[0])
 }
 
-func readline(scanner *bufio.Scanner) string {
+func readLine(scanner *bufio.Scanner) string {
 	if !scanner.Scan() {
 		fmt.Fprintln(os.Stderr, "failed to scan input")
 		os.Exit(1)
