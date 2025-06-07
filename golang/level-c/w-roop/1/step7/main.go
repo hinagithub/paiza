@@ -16,7 +16,7 @@ func main() {
 	length := atoi(inputs[0])
 
 	max := 0
-	// 2重配列を操作し1を見つけたら行例を出力
+	// 2重配列を走査し最大数の値を出力
 	for i := 0; i < length; i++ {
 		row := strings.Fields(readLine(scanner))
 		for _, text := range row {
