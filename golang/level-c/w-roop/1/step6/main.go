@@ -14,7 +14,7 @@ func main(){
     inputs := strings.Fields(readLine(scanner))
     length := atoi(inputs[0])
 
-    // 2重配列を操作し1を見つけたら行例を出力
+    // 2重配列を走査し1を見つけたら行例を出力
     for i := 0; i < length; i ++ {
         row := strings.Fields(readLine(scanner))
         for j, text := range row {
